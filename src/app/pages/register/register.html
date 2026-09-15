@@ -1,21 +1,21 @@
 <div class="auth">
-  <form class="auth-card" (submit)="$event.preventDefault()">
+  <form class="auth-card" #registerForm="ngForm" (ngSubmit)="registerUser(registerForm)" (submit)="$event.preventDefault()">
     <p class="brand">Savemark</p>
     <h1>Create account</h1>
 
     <label>
       Username
-      <input type="text" name="username" autocomplete="username" placeholder="Choose a username" />
+      <input type="text" name="username" autocomplete="username" placeholder="Choose a username" [(ngModel)]="username" />
     </label>
 
     <label>
       Password
-      <input type="password" name="password" autocomplete="new-password" placeholder="Create a password" />
+      <input type="password" name="password" autocomplete="new-password" placeholder="Create a password" [(ngModel)]="password" />
     </label>
 
     <label>
       Confirm password
-      <input type="password" name="confirmPassword" autocomplete="new-password" placeholder="Repeat password" />
+      <input type="password" name="confirmPassword" autocomplete="new-password" placeholder="Repeat password" [(ngModel)]="confirmPassword" />
     </label>
 
     <button type="submit">Register</button>
