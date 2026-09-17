@@ -1,3 +1,9 @@
 <div class="nav-parent">
-  <h1>Navbar</h1>
+  <div class="nav-container">
+    <p class="brand">Savemark</p>
+    <div class="nav-actions">
+      <p class="welcome">Welcome, {{ auth.currentUser?.username || 'there' }}</p>
+      <button type="button" (click)="logoutUser()">Logout</button>
+    </div>
+  </div>
 </div>

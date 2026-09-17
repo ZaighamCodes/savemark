@@ -1,28 +1,59 @@
 <div class="auth">
-  <form class="auth-card" #registerForm="ngForm" (ngSubmit)="registerUser(registerForm)" (submit)="$event.preventDefault()">
+  <form
+    class="auth-card"
+    #registerForm="ngForm"
+    (ngSubmit)="registerUser(registerForm)"
+    (submit)="$event.preventDefault()"
+  >
     <p class="brand">Savemark</p>
     <h1>Create account</h1>
 
     <label>
       Username
-      <input type="text" name="username" autocomplete="username" placeholder="Choose a username" [(ngModel)]="username" />
+      <input
+        type="text"
+        name="username"
+        autocomplete="username"
+        placeholder="Choose a username"
+        [(ngModel)]="username"
+        required
+      />
     </label>
 
     <label>
       Password
-      <input type="password" name="password" autocomplete="new-password" placeholder="Create a password" [(ngModel)]="password" />
+      <input
+        type="password"
+        name="password"
+        autocomplete="new-password"
+        placeholder="Create a password"
+        [(ngModel)]="password"
+        required
+      />
     </label>
 
     <label>
       Confirm password
-      <input type="password" name="confirmPassword" autocomplete="new-password" placeholder="Repeat password" [(ngModel)]="confirmPassword" />
+      <input
+        type="password"
+        name="confirmPassword"
+        autocomplete="new-password"
+        placeholder="Repeat password"
+        [(ngModel)]="confirmPassword"
+        required
+      />
     </label>
-
-    <button type="submit">Register</button>
+    <button type="submit" [disabled]="isLoading">
+      @if (isLoading) {
+        Registering...
+      } @else {
+        Register
+      }
+    </button>
 
     <p class="switch">
       Already have an account?
-      <a routerLink="/login">Login</a>
+      <a routerLink="login">Login</a>
     </p>
   </form>
 </div>

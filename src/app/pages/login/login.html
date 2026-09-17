@@ -1,17 +1,17 @@
 <div class="auth">
-  <form class="auth-card" (submit)="$event.preventDefault()">
+  <form class="auth-card" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)" (submit)="$event.preventDefault()">
     <p class="brand">Savemark</p>
     <h1>Welcome back</h1>
     <p class="subtitle">Sign in to continue saving your Bookmarks.</p>
 
     <label>
       Username
-      <input type="text" name="username" autocomplete="username" placeholder="Enter username" />
+      <input type="text" name="username" autocomplete="username" placeholder="Enter username" [(ngModel)]="username" />
     </label>
 
     <label>
       Password
-      <input type="password" name="password" autocomplete="current-password" placeholder="Enter password" />
+      <input type="password" name="password" autocomplete="current-password" placeholder="Enter password" [(ngModel)]="password" />
     </label>
 
     <button type="submit">Login</button>

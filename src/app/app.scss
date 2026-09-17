@@ -12,8 +12,14 @@
 
 .parent{
     width: 100%;
-    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .container
+    {
+      max-width: 1400px;
+      border: 1px solid red;
+      height: 100%;
+    }
 }

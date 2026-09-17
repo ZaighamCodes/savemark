@@ -1,3 +1,60 @@
-<div class="home parent">
-    <a routerLink="/login">Login page</a>
+<div class="home">
+  <navbar></navbar>
+
+  <div class="home-body">
+    <div class="home-head">
+      <div>
+        <h1>Your bookmarks</h1>
+        <p>Keep the links you need in one place.</p>
+      </div>
+      <button type="button" (click)="openCreate()">Create bookmark</button>
+    </div>
+
+    @if (bookmarks.length === 0) {
+      <p class="empty">No bookmarks yet. Create one to get started.</p>
+    } @else {
+      <div class="cards">
+        @for (bookmark of bookmarks; track bookmark.bookmarkId) {
+          <article class="card">
+            <h2>{{ bookmark.title }}</h2>
+            <p>{{ bookmark.description }}</p>
+            <a [href]="bookmark.url" target="_blank" rel="noopener noreferrer">{{ bookmark.url }}</a>
+            <div class="card-actions">
+              <button type="button" class="ghost" (click)="openEdit(bookmark)">Update</button>
+              <button type="button" class="ghost danger" (click)="deleteBookmark(bookmark.bookmarkId)">Delete</button>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </div>
+
+  @if (formOpen) {
+    <div class="overlay" (click)="closeForm()">
+      <form class="form-card" (click)="$event.stopPropagation()" (submit)="$event.preventDefault(); saveBookmark()">
+        <p class="brand">Savemark</p>
+        <h2>{{ editingId ? 'Update bookmark' : 'Create bookmark' }}</h2>
+
+        <label>
+          Title
+          <input type="text" name="title" [(ngModel)]="form.title" placeholder="Bookmark title" required />
+        </label>
+
+        <label>
+          Description
+          <input type="text" name="description" [(ngModel)]="form.description" placeholder="Short description" required />
+        </label>
+
+        <label>
+          URL
+          <input type="url" name="url" [(ngModel)]="form.url" placeholder="https://example.com" required />
+        </label>
+
+        <div class="form-actions">
+          <button type="button" class="ghost" (click)="closeForm()">Cancel</button>
+          <button type="submit">{{ editingId ? 'Update' : 'Create' }}</button>
+        </div>
+      </form>
+    </div>
+  }
 </div>
