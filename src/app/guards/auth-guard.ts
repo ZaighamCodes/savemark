@@ -14,7 +14,7 @@ export const authGuard: CanActivateFn = () => {
   const auth=inject(Auth);
   // return true;
 
-  return http.get<User>('http://localhost:8080/users/me', { withCredentials: true }).pipe(
+  return http.get<User>('https://bookmark-manager-2kyh.onrender.com/users/me', { withCredentials: true }).pipe(
     map((response) => 
     {
       auth.currentUser=response;
