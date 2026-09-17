@@ -19,7 +19,8 @@ export interface Bookmark {
 })
 export class BookmarkService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:8080/';
+  // private baseUrl = 'http://localhost:8080/';
+    private baseUrl='https://bookmark-manager-2kyh.onrender.com/';
 
   getBookmarks() {
     return this.http.get<Bookmark[]>(this.baseUrl + 'users/bookmarks', {
